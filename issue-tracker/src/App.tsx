@@ -5,7 +5,7 @@ interface Issue {
  id : number
   title: string;
 status :string
-comments : Array<Issue>;
+comments : Array<Comment>;
 }
 
 const myIssue : Issue = {
