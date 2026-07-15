@@ -1,14 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
   
 interface Issue {
  id : number
   title: string;
 status :string
-comments : Array;
+comments : Array<Issue>;
 }
 
 const myIssue : Issue = {
@@ -22,18 +19,20 @@ interface Comment {
   id: number;
  name : string
   text: string;
+   author: string;
   
 }
 const myComment : Comment = {
   text : "Привет",
   id : 2,
   name: "Алеша",
+  author :"Админ",
 }
 function App() {
-  const [issues, setIssues] = useState<Issue[]>([]);
+   const [issues, setIssue] = useState<Issue[]>([]);
   return (
     <div>
-      {}
+      {myComment.author}
     </div>
   )
 }
