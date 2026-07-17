@@ -1,19 +1,6 @@
-import { useState } from 'react'
+import { useState,  useMemo } from 'react'
 import './App.css'
-  
-interface Issue {
- id : number
-  title: string;
-status :string
-comments : Array<Comment>;
-}
-
-const myIssue : Issue = {
-id : 1,
-title : "React",
-status : "open",
-comments : []
-}
+ 
 
 interface Comment {
   id: number;
@@ -22,17 +9,33 @@ interface Comment {
    author: string;
   
 }
+interface Issue {
+ id : number
+  title: string;
+status :string
+comments : Array<Comment>;
+}
+ 
 const myComment : Comment = {
   text : "Привет",
   id : 2,
   name: "Алеша",
   author :"Админ",
 }
+const myIssue : Issue = {
+id : 1,
+title : "React",
+status : "open",
+comments : [myComment] 
+}
+
 function App() {
    const [issues, setIssue] = useState<Issue[]>([]);
+   const [statusFilter , setStatusFilter ] = useState<string>("open");
+   const filterIssues = useMemo(() => issues.filter(item=> item.status === statusFilter) ,[issues, statusFilter])
   return (
     <div>
-      {myComment.author}
+   <h1>Issue Tracker</h1>
     </div>
   )
 }
