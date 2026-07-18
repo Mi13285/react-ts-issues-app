@@ -31,8 +31,19 @@ comments : [myComment]
 
 function App() {
    const [issues, setIssue] = useState<Issue[]>([]);
-   const [statusFilter , setStatusFilter ] = useState<string>("open");
-   const filterIssues = useMemo(() => issues.filter(item=> item.status === statusFilter) ,[issues, statusFilter])
+   const [statusFilter, setstatusFilter] = useState<string>("open")
+   const filterIssues = useMemo(() => issues.filter(item=> item.status === statusFilter ), [issues,statusFilter])
+const  loadIssues = async()=> {
+  try {
+    const response = await fetch("ссылка");
+    const data = await response.json()
+  } catch (error) {
+    console.log(error)
+    
+  }
+  
+}
+
   return (
     <div>
    <h1>Issue Tracker</h1>
