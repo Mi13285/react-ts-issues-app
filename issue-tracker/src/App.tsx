@@ -33,16 +33,23 @@ function App() {
    const [issues, setIssue] = useState<Issue[]>([]);
    const [statusFilter, setstatusFilter] = useState<string>("open")
    const filterIssues = useMemo(() => issues.filter(item=> item.status === statusFilter ), [issues,statusFilter])
-const  loadIssues = async()=> {
-  try {
-    const response = await fetch("ссылка");
-    const data = await response.json()
-  } catch (error) {
-    console.log(error)
-    
-  }
-  
-}
+   const loadissues= async ()=>{
+    try {
+       const response =  await fetch("https://google.com")
+       const data = await response.json();
+        const  transformedIssues  = data.map((item: any) => {
+  return {
+    id: item.id,
+    title: item.title,
+    status: item.state, 
+    comments: []
+  };
+});
+  setIssues(transformedIssues);    
+    } catch (error) {
+      console.log(error)
+    }
+   }
 
   return (
     <div>
