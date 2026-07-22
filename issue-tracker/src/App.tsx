@@ -45,12 +45,14 @@ function App() {
     comments: []
   };
 });
-  setIssues(transformedIssues);    
+  setIssue(transformedIssues);    
     } catch (error) {
       console.log(error)
     }
    }
-
+function sortedIssues() {
+ return filterIssues.slice().sort((a, b) => b.id- a.id); 
+}
   return (
     <div>
    <h1>Issue Tracker</h1>
