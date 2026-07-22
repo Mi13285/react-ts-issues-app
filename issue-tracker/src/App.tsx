@@ -39,14 +39,7 @@ function App() {
       const response = await fetch("https://jsonplaceholder.typicode.com/posts");
       const data = await response.json();
       console.log("СЫРЫЕ ДАННЫЕ ИЗ СЕТИ:", data);
-      const transfOne = data.map((item: any) => {
-        return {
-          id: item.id,
-          title: item.title,
-          status: item.status,
-          comments: []
-        };
-      });
+      const transfOne = data.map((item: any) => ({ id: item.id, title: item.title, status: item.status, comments: [] }));
 
       console.log(transfOne);
       setIssue(transfOne);
